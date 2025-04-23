@@ -42,9 +42,24 @@ http://localhost:8080/receipts/<uuid>/points
  To execute all tests (handlers and points logic):
 `go test ./... -v`
 
+- Two test files: `/service/calculate_points_test.go` and an api test file: `tests/integration/api_test.go`
+- Integration folder is for a wholistic testing strategy as it involves (routing, logic, and storage)
 - A breakdown of how points are calculated for each test case is included in the unit tests.
 - Run tests with verbose output using `go test ./... -v` to see how individual point values are derived.
 - This helps explain and validate how the total points are computed for each receipt scenario.
+
+**Example Test Output**
+```bash
+=== RUN   TestCalculatePoints/Target_Example
+    calculate_points_test.go:183: 
+        6 pts - Retailer Name
+        0 pts - Round Dollar Total
+        0 pts - Multiple of $0.25
+        10 pts - Item Count every 2 items
+        6 pts - Item Descriptions mult of 3
+        6 pts - Odd Purchase Date
+        0 pts - Purchase Time
+```
 
 ## API Endpoints
 POST /receipts/process
