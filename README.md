@@ -92,10 +92,6 @@ Response body:
 4. **Deterministic ID**
     - i.  Each receipt is assigned a deterministic UUID using `uuid.NewSHA1`, derived from the receipt data.
     - ii. This ensures that the same receipt content always generates the same UUID.
-    - iii Initially, this ID was used to check for cache hits in the `processReceipt` endpoint.
-    - iv. That cache check was removed to avoid returning outdated results if the point calculation logic changes.
-    - v.  The deterministic UUID approach might be useful for other scenarios, such as versioning by adding on to the receipt object.
-    - vi. In a real-world application, the namespace UUID would be treated as a secret to prevent users from being able to reverse-engineer IDs.
 
 5. **Rules:**
     - i. 1 point for every alphanumeric character in the retailer name.
